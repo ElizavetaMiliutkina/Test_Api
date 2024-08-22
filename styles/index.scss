@@ -1,0 +1,18 @@
+@import "global";
+@import "themes/normal";
+@import "themes/dark";
+
+:root {
+    --font-family-main: consolas, "Rubik",sans-serif;
+    --font-size-s: 14px;
+    --font-size-m: 18px;
+    --font-size-l: 24px;
+    --font-size-xl: 36px;
+
+    // Colors
+    --color-black: black;
+    --color-blue: #030953;
+    --color-red: #EF3E4A;
+    --color-gray: gray;
+    --color-gray-light: #F7F7F7;
+}
