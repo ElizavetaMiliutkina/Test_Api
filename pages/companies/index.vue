@@ -78,7 +78,7 @@ const getCompanies = async () => {
     industries.value = response.Industry;
     dataLoaded.value = true
   } catch (error) {
-    console.error('Failed to load companies', error);
+    console.error('Failed to load data', error);
   }
 };
 

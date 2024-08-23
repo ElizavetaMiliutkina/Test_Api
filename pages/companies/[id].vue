@@ -65,7 +65,7 @@ const getCompanies = async () => {
   try {
     company.value = await fetchCompany(route.params.id);
   } catch (error) {
-    console.error('Failed to load companies', error);
+    console.error('Failed to load company', error);
   }
 };
 getCompanies();

@@ -11,7 +11,6 @@ export const fetchCompanies = async (payload) => {
         });
         return response.data;
     } catch (error) {
-        console.error('Error fetching companies:', error);
         throw error;
     }
 };
@@ -23,7 +22,6 @@ export const fetchCompany = async (id) => {
         });
         return response.data.data;
     } catch (error) {
-        console.error('Error fetching company:', error);
         throw error;
     }
 };
@@ -33,7 +31,6 @@ export const fetchDefinitions = async () => {
         const response = await axios.get(`${API_BASE_URL}/definitions`);
         return response.data;
     } catch (error) {
-        console.error('Error fetching companies:', error);
         throw error;
     }
 };

@@ -3,7 +3,7 @@
     <label class="form-label">{{ label }}</label>
     <div class="select-wrapper" @click="toggleDropdown">
       <div class="select-display" :style="{ color: selectedValue ? 'black' : 'gray' }">
-        {{ selectedOption.title || placeholder }}
+        {{ selectedValue ? getTitle() : placeholder }}
         <div>
           <span v-if="selectedValue" class="cross" @click.stop="resetSelection">&#10005;</span>
           <img src="/svg/arrow.svg" :class="{ 'rotate': showDropdown }" />
@@ -40,6 +40,12 @@ export default {
     const selectedValue = ref(props.modelValue);
     const showDropdown = ref(false);
 
+    watch(() => props.modelValue, (newValue) => {
+      if (newValue !== selectedValue.value) {
+        selectOption(props.data.find(option => option.id === Number(newValue)));
+      }
+    });
+
     const selectOption = (option) => {
       selectedValue.value = option.id;
       showDropdown.value = false;
@@ -55,11 +61,11 @@ export default {
       showDropdown.value = !showDropdown.value;
     };
 
-    const selectedOption = computed(() => {
-      return props.data.find(option => option.id === selectedValue.value) || {};
-    });
+    const getTitle = () => {
+      return props.data.find(option => option.id === Number(selectedValue.value))?.title || props.placeholder;
+    };
 
-    return { selectedValue, showDropdown, selectOption, resetSelection, toggleDropdown, selectedOption };
+    return { selectedValue, showDropdown, selectOption, resetSelection, toggleDropdown, getTitle };
   }
 };
 </script>
